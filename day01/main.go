@@ -10,13 +10,13 @@ import (
 )
 
 func getLists(file string) ([]int, []int) {
-	left := []int{}
-	right := []int{}
 	regex := *regexp.MustCompile(`(?s)(\d+)   (\d+)`)
 	res := regex.FindAllStringSubmatch(file, -1)
-	for _, res_i := range res {
-		iLeft, _ := strconv.Atoi(res_i[1])
-		iRight, _ := strconv.Atoi(res_i[2])
+	left := make([]int, len(res))
+	right := make([]int, len(res))
+	for _, x := range res {
+		iLeft, _ := strconv.Atoi(x[1])
+		iRight, _ := strconv.Atoi(x[2])
 		left = append(left, iLeft)
 		right = append(right, iRight)
 	}
